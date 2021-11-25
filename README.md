@@ -1,1 +1,1 @@
-# gh-generate-step-dinamically
+# gh-generate-steps-dinamically
