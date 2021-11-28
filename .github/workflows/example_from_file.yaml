@@ -22,9 +22,12 @@ jobs:
     outputs:
       myitems: ${{ steps.data.outputs.myitems }}
     steps:
-      - name: Extract list of Spokes
+      - uses: actions/checkout@v2 # create a checkout (pull repository) in the runner working_dir (usually _work)
+      - run: git pull origin ${GITHUB_REF##*/}
+      - name: Extract data from yaml file
         id: data
         run: |
+          cd ${GITHUB_WORKSPACE}
           echo "::set-output name=myitems::$(cat ./config.yaml | yq e '.spokes.[] | keys | join(",")' - | jq -Rsc '. / "\n" - [""]')"
 
   verify-installation:
