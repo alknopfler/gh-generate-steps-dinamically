@@ -1,0 +1,24 @@
+config:
+  clusterimageset: openshift-v4.9.0
+spokes:
+  - spoke1-cluster:
+      master0:
+        data: "spoke1 - master 0"
+      master1:
+        data: "spoke1 - master 1"
+      master2:
+        data: "spoke1 - master 2"
+  - spoke2-cluster:
+      master0:
+        data: "spoke2 - master 0"
+      master1:
+        data: "spoke2 - master 1"
+      master2:
+        data: "spoke2 - master 2"
+  - spoke3-cluster:
+      master0:
+        data: "spoke3 - master 0"
+      master1:
+        data: "spoke3 - master 1"
+      master2:
+        data: "spoke3 - master 2"

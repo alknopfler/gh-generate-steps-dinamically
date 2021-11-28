@@ -1,0 +1,40 @@
+name: example read from file
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  description:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v2 # create a checkout (pull repository) in the runner working_dir (usually _work)
+      - run: git pull origin ${GITHUB_REF##*/}
+
+      - name: Description
+        run: echo "This is an example to generate steps dinamically based on a yaml file. For each line we will create a step in the pipeline dinamically "
+          
+      
+  extract-yaml-data:
+    needs:
+      - description
+    runs-on: ubuntu-latest
+    outputs:
+      myitems: ${{ steps.data.outputs.myitems }}
+    steps:
+      - name: Extract list of Spokes
+        id: data
+        run: |
+          echo "::set-output name=myitems::$(cat ./config.yaml | yq e '.spokes.[] | keys | join(",")' - | jq -Rsc '. / "\n" - [""]')"
+
+  verify-installation:
+    needs: extract-yaml-data
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        mymatrix: ${{ fromJSON(needs.extract-yaml-data.outputs.myitems) }}
+    steps:
+      - name: ${{ matrix.mymatrix }}
+        run: |
+          echo "Do something with ... ${{ matrix.mymatrix }}"
+          
