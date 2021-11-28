@@ -4,9 +4,5 @@ This repo is based on github action in order to create an example to explain how
 
 If you want to read the full article, you can go to:
 
-[]: # Link:
+[]: # Link: [gh-generate-steps-dinamically](https://alknopfler.github.io/post/gh-actions-create-steps-dinamically/)
 
-- varios ejemplos:
-  - primero con lectura de ficheros y procesado de entradas
-  - segunda resultado de un kubectl get resource y procesado de multiples acciones
-  - 
