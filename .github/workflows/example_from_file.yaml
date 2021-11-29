@@ -12,7 +12,7 @@ jobs:
       - run: git pull origin ${GITHUB_REF##*/}
 
       - name: Description
-        run: echo "This is an example to generate steps dinamically based on a yaml file. For each line we will create a step in the pipeline dinamically "
+        run: echo "This is an example to generate steps dynamically based on a yaml file. For each line we will create a step in the pipeline dynamically "
           
       
   extract-yaml-data:
