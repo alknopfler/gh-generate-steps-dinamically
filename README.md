@@ -1,6 +1,6 @@
 # gh-generate-steps-dynamically
 
-This repo is based on github action in order to create an example to explain how to use the matrix feature to create steps dinamically.
+This repo is based on github action in order to create an example to explain how to use the matrix feature to create steps dynamically.
 
 If you want to read the full article, you can go to:
 
